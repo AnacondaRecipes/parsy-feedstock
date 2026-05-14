@@ -1,7 +1,6 @@
 {% set name = "parsy" %}
 {% set version = "2.2" %}
 
-
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -22,7 +21,7 @@ requirements:
     - setuptools >=42
     - wheel
   run:
-    - python >=3.9
+    - python
 
 test:
   imports:
