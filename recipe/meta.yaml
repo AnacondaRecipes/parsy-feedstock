@@ -18,8 +18,7 @@ requirements:
   host:
     - python
     - pip
-    - setuptools >=42
-    - wheel
+    - setuptools >=61.2
   run:
     - python
 
@@ -30,7 +29,6 @@ test:
     - pip check
   requires:
     - pip
-    - python
 
 about:
   home: https://github.com/python-parsy/parsy
