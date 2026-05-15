@@ -1,26 +1,26 @@
 {% set name = "parsy" %}
-{% set version = "2.0" %}
-
+{% set version = "2.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/parsy-{{ version }}.tar.gz
-  sha256: 7fd36ce0ebb0b80d969d39975038172de95ba212d9f0e1e73d8d51bf284f4524
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/parsy-{{ version }}.tar.gz
+  sha256: e943147644a8cf0d82d1bcb5c5867dd517495254cea3e3eb058b1e421cb7561f
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<39]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
+    - python
     - pip
-    - python >=3.7
+    - setuptools >=61.2
   run:
-    - python >=3.7
+    - python
 
 test:
   imports:
@@ -33,8 +33,15 @@ test:
 about:
   home: https://github.com/python-parsy/parsy
   summary: easy-to-use parser combinators, for parsing in pure Python
+  description: |
+    Parsy is an easy-to-use library for writing parser combinators in pure Python.
+    It lets you build parsers from small, composable pieces and is suitable for
+    parsing structured text and lightweight domain-specific languages.
   license: MIT
+  license_family: MIT
   license_file: LICENSE
+  doc_url: https://parsy.readthedocs.io
+  dev_url: https://github.com/python-parsy/parsy
 
 extra:
   recipe-maintainers:
